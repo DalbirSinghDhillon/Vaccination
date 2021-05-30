@@ -13,15 +13,10 @@ public class VaccineDistribution {
 
 	// To parse the object, add the attribute in the object
 	static void parseObject(JSONObject obj) {
-		/*
-		 * System.out.println(obj.get("Name")); System.out.println(obj.get("Age"));
-		 * System.out.println(obj.get("Latitude"));
-		 * System.out.println(obj.get("Longitude"));
-		 */
+		
 		double latitude = Double.valueOf((String) obj.get("Latitude"));
 		double longitude = Double.valueOf((String) obj.get("Longitude"));
 		String nearestVaccinationCenter = NearestVaccintionCenter(latitude, longitude);
-		// System.out.println("Closest Center is : " + nearestVaccinationCenter);
 		obj.put("ClosestVaccinationCenter", nearestVaccinationCenter);
 
 	}
@@ -40,18 +35,15 @@ public class VaccineDistribution {
 
 		double distanceToGalwayRacecourse = CalculateDistance(Math.toRadians(latGalwayRacecourse),
 				Math.toRadians(longGalwayRacecourse), Math.toRadians(latitude), Math.toRadians(longitude));
-		// System.out.println("distanceToGalwayRacecourse " + distanceToGalwayRacecourse
-		// + " Kms");
+		
 
 		double distanceToCityHallCork = CalculateDistance(Math.toRadians(latCityHallCork),
 				Math.toRadians(longCityHallCork), Math.toRadians(latitude), Math.toRadians(longitude));
-		// System.out.println("distanceToCityHallCork " + distanceToCityHallCork+ "
-		// Kms");
+		
 
 		double distanceToCitywestConventionCentreDublin = CalculateDistance(Math.toRadians(latCitywestConventionCentre),
 				Math.toRadians(longCitywestConventionCentre), Math.toRadians(latitude), Math.toRadians(longitude));
-		// System.out.println("distanceToCitywestConventionCentreDublin " +
-		// distanceToCitywestConventionCentreDublin+ " Kms");
+		
 
 		if (distanceToGalwayRacecourse <= distanceToCityHallCork
 				&& distanceToGalwayRacecourse <= distanceToCitywestConventionCentreDublin)
@@ -93,7 +85,7 @@ public class VaccineDistribution {
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
-		// TODO Auto-generated method stub
+		
 
 		JSONParser jsonParser = new JSONParser();
 
