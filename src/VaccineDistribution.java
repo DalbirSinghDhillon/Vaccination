@@ -12,17 +12,17 @@ import org.json.simple.parser.ParseException;
 public class VaccineDistribution {
 
 	// To parse the object, add the attribute in the object
-	static void parseObject(JSONObject obj) {
+	public static void parseObject(JSONObject obj) {
 		
 		double latitude = Double.valueOf((String) obj.get("Latitude"));
 		double longitude = Double.valueOf((String) obj.get("Longitude"));
-		String nearestVaccinationCenter = NearestVaccintionCenter(latitude, longitude);
+		String nearestVaccinationCenter = NearestVaccinationCenter(latitude, longitude);
 		obj.put("ClosestVaccinationCenter", nearestVaccinationCenter);
 
 	}
 
 	// calculate the distance for nearest Vaccination center
-	private static String NearestVaccintionCenter(double latitude, double longitude) {
+	public static String NearestVaccinationCenter(double latitude, double longitude) {
 
 		double latGalwayRacecourse = 53.298810877564875;
 		double longGalwayRacecourse = -8.997003657335881;
@@ -59,7 +59,7 @@ public class VaccineDistribution {
 	}
 
 	// calculate the Distance using Haversine's Formula
-	private static double CalculateDistance(double centerLatRadian, double centerLongRadian, double latRadian,
+	public static double CalculateDistance(double centerLatRadian, double centerLongRadian, double latRadian,
 			double longRadian) {
 
 		double radiusOfEarth = 6371.009; // in Kilometers
@@ -71,7 +71,7 @@ public class VaccineDistribution {
 
 	}
 
-	private static ArrayList<JSONObject> groupAndSort(JSONArray jsonArray) {
+	public static ArrayList<JSONObject> groupAndSort(JSONArray jsonArray) {
 		ArrayList<JSONObject> list = new ArrayList<>();
 		for (int i = 0; i < jsonArray.size(); i++) {
 			list.add((JSONObject) jsonArray.get(i));
